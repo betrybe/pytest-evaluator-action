@@ -1,14 +1,16 @@
 #!/bin/sh -l
 set -x
 
-# git clone https://github.com/$GITHUB_REPOSITORY.git /github/master-repo/
-# rm -rf /github/workspace/tests
-# cp -r /github/master-repo/tests /github/workspace
+git clone https://github.com/$GITHUB_REPOSITORY.git /github/master-repo/
+# Assure that the tests are the originals
+rm -rf /github/workspace/tests
+cp -r /github/master-repo/tests /github/workspace
 
 cd /github/workspace
 python3 -m pip install -r requirements.txt
 python3 -m pytest --json=/tmp/report.json
 
+# Run evaluator assuring that the requirements is the original
 python3 /home/evaluation.py /tmp/report.json /github/workspace/.trybe/requirements.json > /tmp/evaluation_result.json
 echo "$(cat /tmp/evaluation_result.json)"
 
