@@ -9,6 +9,11 @@
       "identifier": "test_csv_importer_sucesso",
       "description": "Valide se a importação do JSON foi feita com sucesso",
       "bonus": false
+    },
+    {
+      "identifier": "test_csv_importer_arquivo_nao_encontrado",
+      "description": "Caso o arquivo não exista, deve ser exibida a mensagem \"Arquivo {path/to/file.json} não encontrado\"",
+      "bonus": false
     }
   ]
 }
