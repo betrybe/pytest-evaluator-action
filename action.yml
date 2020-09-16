@@ -1,0 +1,10 @@
+name: 'Pytest Evaluator'
+description: 'Run Pytest on project and return the results formatted'
+outputs:
+  result:
+    description: 'Evaluation JSON results in base64 format.'
+  pr-number:
+    description: 'Pull Request number that trigger build.'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
