@@ -6,6 +6,7 @@ rm -rf /github/workspace/tests
 cp -r /github/master-repo/tests /github/workspace
 
 cd /github/workspace
+python3 -m pip install -r requirements.txt
 python3 -m pytest --json=/tmp/report.json
 
 python3 /home/evaluation.py /tmp/report.json /github/master-repo/.trybe/requirements.json > /tmp/evaluation_result.json
