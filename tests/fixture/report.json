@@ -25,6 +25,28 @@
                     "outcome": "passed"
                 },
                 "outcome": "passed"
+            },
+            {
+                "name": "tests/test_news_importer.py::test_csv_importer_sucesso",
+                "duration": 0.027645111083984375,
+                "run_index": 0,
+                "setup": {
+                    "name": "setup",
+                    "duration": 0.010298967361450195,
+                    "outcome": "passed"
+                },
+                "call": {
+                    "name": "call",
+                    "duration": 0.006505250930786133,
+                    "outcome": "failed",
+                    "longrepr": "def test_json_importer_sucesso():\n        file_path = os.path.join(CURRENT_PATH, 'fixture', 'doc.json')\n        res = json_importer(file_path)\n        assert len(res) == 1\n>       assert res[0]['title'] == 'Alemanha j\u00e1 trabalha na regulamenta\u00e7\u00e3o de carros aut\u00f4nomosss'\nE       AssertionError: assert 'Alemanha j\u00e1 ...ros aut\u00f4nomos' == 'Alemanha j\u00e1 ...s aut\u00f4nomosss'\nE         Skipping 47 identical leading characters in diff, use -v to show\nE         - s aut\u00f4nomosss\nE         ?            --\nE         + s aut\u00f4nomos\n\ntests/test_news_importer.py:62: AssertionError"
+                },
+                "teardown": {
+                    "name": "teardown",
+                    "duration": 0.0005419254302978516,
+                    "outcome": "passed"
+                },
+                "outcome": "failed"
             }
         ],
         "summary": {
