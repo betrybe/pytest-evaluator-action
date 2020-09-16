@@ -1,1 +1,37 @@
-{"report": {"environment": {"Python": "3.7.7", "Platform": "Linux-5.4.57-1-MANJARO-x86_64-with-arch-Manjaro-Linux"}, "tests": [{"name": "tests/test_news_importer.py::test_json_importer_sucesso", "duration": 0.029891014099121094, "run_index": 0, "setup": {"name": "setup", "duration": 0.014327049255371094, "outcome": "passed"}, "call": {"name": "call", "duration": 0.0008132457733154297, "outcome": "passed"}, "teardown": {"name": "teardown", "duration": 0.00042366981506347656, "outcome": "passed"}, "outcome": "passed"}], "summary": {"passed": 1, "num_tests": 1, "duration": 0.09271740913391113}, "created_at": "2020-09-16 14:35:04.559426"}}
+{
+    "report": {
+        "environment": {
+            "Python": "3.7.7",
+            "Platform": "Linux-5.4.57-1-MANJARO-x86_64-with-arch-Manjaro-Linux"
+        },
+        "tests": [
+            {
+                "name": "tests/test_news_importer.py::test_json_importer_sucesso",
+                "duration": 0.029891014099121094,
+                "run_index": 0,
+                "setup": {
+                    "name": "setup",
+                    "duration": 0.014327049255371094,
+                    "outcome": "passed"
+                },
+                "call": {
+                    "name": "call",
+                    "duration": 0.0008132457733154297,
+                    "outcome": "passed"
+                },
+                "teardown": {
+                    "name": "teardown",
+                    "duration": 0.00042366981506347656,
+                    "outcome": "passed"
+                },
+                "outcome": "passed"
+            }
+        ],
+        "summary": {
+            "passed": 1,
+            "num_tests": 1,
+            "duration": 0.09271740913391113
+        },
+        "created_at": "2020-09-16 14:35:04.559426"
+    }
+}
