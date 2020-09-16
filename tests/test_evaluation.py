@@ -1,4 +1,6 @@
-from src.evaluation import *
+import os
+import json
+from src.evaluation import generate_result
 
 CURRENT_PATH = os.path.dirname(__file__)
 FAILED_GRADE = 0

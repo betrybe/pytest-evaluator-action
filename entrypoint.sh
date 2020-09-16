@@ -1,4 +1,5 @@
 #!/bin/sh -l
+set -x
 
 git clone https://github.com/$GITHUB_REPOSITORY.git /github/master-repo/
 rm -rf /github/workspace/tests
