@@ -2,6 +2,9 @@ import os
 import json
 import sys
 
+FAILED_GRADE = 0
+PASSED_GRADE = 3
+
 def generate_result(report_file, req_file):
     with open(report_file, 'r') as read_file:
         report = json.load(read_file)
@@ -15,7 +18,7 @@ def generate_result(report_file, req_file):
     for req in reqs:
         evaluation = {
             "description": req['description'],
-            "grade": 0
+            "grade": FAILED_GRADE
         }
 
         test_result = list(filter(
@@ -28,7 +31,7 @@ def generate_result(report_file, req_file):
 
         test_result = next(iter(test_result))
         if test_result['outcome'] == 'passed':
-            evaluation['grade'] = 3
+            evaluation['grade'] = PASSED_GRADE
         evaluations.append(evaluation)
 
     return {
