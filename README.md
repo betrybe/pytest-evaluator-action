@@ -28,7 +28,7 @@ docker build . -t 'pytest_evaluator_action'
 
 ## Evaluator Action
 
-To call the evaluator action you must create `.github/workflows/main.yml` in the project repo
+To call the evaluator action you must create `.github/workflows/main.yml` in the project repo with the release version.
 
 ```yml
 on:
@@ -43,6 +43,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Pytest Evaluator Step
         uses: betrybe/pytest-evaluator-action@v*
+        with:
+          repository-main-branch: master
         id: pytest_evaluator
       - name: Store evaluation step
         uses: betrybe/store-evaluation-action@v2
@@ -53,15 +55,21 @@ jobs:
 
 ```
 
+## Inputs
+
+### `repository-main-branch`
+
+**Required**
+
+**Default: "master"**
+
+GitHub main branch to get the original tests and requirements.
+
 ### Outputs
 
 #### `result`
 
 Evaluation result JSON in base64 format.
-
-#### `pr-number`
-
-Pull Request number that trigger build.
 
 ## Trybe requirements and expected results
 
