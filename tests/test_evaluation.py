@@ -20,15 +20,12 @@ def test_generate_result_success():
     assert len(tests_eval) == len(reqs)
     # If test passed, should return passed grade
     assert tests_eval[0]['grade'] == PASSED_GRADE
-    assert tests_eval[0]['identifier'] == reqs[0]['identifier']
     assert tests_eval[0]['description'] == reqs[0]['description']
     # If test failed, should return failed grade
     assert tests_eval[1]['grade'] == FAILED_GRADE
-    assert tests_eval[1]['identifier'] == reqs[1]['identifier']
     assert tests_eval[1]['description'] == reqs[1]['description']
     # If test is not found on report, should return failed grade
     assert tests_eval[2]['grade'] == FAILED_GRADE
-    assert tests_eval[2]['identifier'] == reqs[2]['identifier']
     assert tests_eval[2]['description'] == reqs[2]['description']
 
 

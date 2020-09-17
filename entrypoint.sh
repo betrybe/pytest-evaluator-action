@@ -3,17 +3,18 @@ set -x
 
 REPOSITORY_BRANCH=$1
 
-git clone --single-branch --branch "$REPOSITORY_BRANCH" "https://github.com/$GITHUB_REPOSITORY.git" /github/master-repo/
+git clone --single-branch --branch "$REPOSITORY_BRANCH" "https://github.com/$GITHUB_REPOSITORY.git" /github/main-branch/
 # Assure that the tests are the originals
 rm -rf /github/workspace/tests
-cp -r /github/master-repo/tests /github/workspace
+cp -r /github/main-branch/tests /github/workspace
 
+# Install deps and run pytest over the student source
 cd /github/workspace
 python3 -m pip install -r requirements.txt
 python3 -m pytest --json=/tmp/report.json
 
-# Run evaluator assuring that the requirements is the original
-python3 /home/evaluation.py /tmp/report.json /github/workspace/.trybe/requirements.json > /tmp/evaluation_result.json
+# Run evaluator over pytest result assuring that the requirements file is the original
+python3 /home/evaluation.py /tmp/report.json /github/main-branch/.trybe/requirements.json > /tmp/evaluation_result.json
 printf "$(cat /tmp/evaluation_result.json)\n"
 
 if [ $? != 0 ]; then
