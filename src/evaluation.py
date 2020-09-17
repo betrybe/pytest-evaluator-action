@@ -5,6 +5,7 @@ import sys
 FAILED_GRADE = 0
 PASSED_GRADE = 3
 
+
 def generate_result(report_file, req_file):
     with open(report_file, 'r') as read_file:
         report = json.load(read_file)
@@ -39,6 +40,7 @@ def generate_result(report_file, req_file):
         'github_repository_name': os.getenv('GITHUB_REPOSITORY', ''),
         'evaluations': evaluations
     }
+
 
 if __name__ == "__main__":
     if len(sys.argv) < 3:
