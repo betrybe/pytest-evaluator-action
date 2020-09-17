@@ -1,6 +1,6 @@
 # Pytest Evaluator Action
 
-This action run Pytest on project and build a evaluation `.json` as result
+This action run Pytest over project and build a evaluation `.json` as result
 
 ### Install dependencies
 
@@ -99,7 +99,7 @@ This file should have the following structure:
 }
 ```
 
-where the `"requirement #1"`, `"requirement #2"` and `"requirement #3"` are the requirements and describes names and the `identifier` must be the test name on project repository.
+where the `"requirement #1"`, `"requirement #2"` and `"requirement #3"` are the requirements and describes names and the `identifier` must be the test name in the project repository.
 
 ## Learn about GitHub Actions
 
