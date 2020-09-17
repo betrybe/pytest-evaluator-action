@@ -1,10 +1,13 @@
 name: 'Pytest Evaluator'
 description: 'Run Pytest on project and return the results formatted'
+inputs:
+  repository-main-branch:
+    description: 'GitHub main branch to get the original tests and requirements.'
+    default: 'master'
+    required: true
 outputs:
   result:
     description: 'Evaluation JSON results in base64 format.'
-  pr-number:
-    description: 'Pull Request number that trigger build.'
 runs:
   using: 'docker'
   image: 'Dockerfile'

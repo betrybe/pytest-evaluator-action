@@ -1,7 +1,9 @@
 #!/bin/sh -l
 set -x
 
-git clone https://github.com/$GITHUB_REPOSITORY.git /github/master-repo/
+REPOSITORY_BRANCH=$1
+
+git clone --single-branch --branch "$REPOSITORY_BRANCH" "https://github.com/$GITHUB_REPOSITORY.git" /github/master-repo/
 # Assure that the tests are the originals
 rm -rf /github/workspace/tests
 cp -r /github/master-repo/tests /github/workspace
@@ -12,7 +14,7 @@ python3 -m pytest --json=/tmp/report.json
 
 # Run evaluator assuring that the requirements is the original
 python3 /home/evaluation.py /tmp/report.json /github/workspace/.trybe/requirements.json > /tmp/evaluation_result.json
-echo "$(cat /tmp/evaluation_result.json)"
+printf "$(cat /tmp/evaluation_result.json)\n"
 
 if [ $? != 0 ]; then
   printf "Execution error $?"
@@ -20,4 +22,3 @@ if [ $? != 0 ]; then
 fi
 
 echo ::set-output name=result::`cat /tmp/evaluation_result.json | base64 -w 0`
-echo ::set-output name=pr-number::$(echo "$GITHUB_REF" | awk -F / '{print $3}')

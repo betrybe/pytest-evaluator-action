@@ -14,7 +14,6 @@ def generate_result(report_file, req_file):
     evaluations = []
     for req in reqs:
         evaluation = {
-            "identifier": req['identifier'],
             "description": req['description'],
             "grade": 0
         }
