@@ -4,6 +4,7 @@ import src.evaluation as ev
 
 CURRENT_PATH = os.path.dirname(__file__)
 
+
 def test_generate_result_success():
     fake_report = os.path.join(CURRENT_PATH, 'fixture', 'report.json')
 
