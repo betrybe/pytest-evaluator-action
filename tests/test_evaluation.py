@@ -28,6 +28,11 @@ def test_generate_result_success():
     assert evaluations[2]['description'] == requirements[2]['description']
 
 
+def test_enums():
+    evaluation.FAILED_GRADE == 1
+    evaluation.PASSED_GRADE == 3
+
+
 def load_file(file):
     with open(file, 'r') as read_file:
         r = json.load(read_file)
