@@ -1,6 +1,6 @@
 import os
 import json
-import src.evaluation as ev
+from src import evaluation
 
 CURRENT_PATH = os.path.dirname(__file__)
 
@@ -10,22 +10,22 @@ def test_generate_result_success():
 
     req_mock = os.path.join(CURRENT_PATH, 'fixture', 'requirements.json')
     reqs = load_file(req_mock)
-    reqs = list(reqs['requirements'])
+    requirements = list(reqs['requirements'])
 
-    res = ev.generate_result(fake_report, req_mock)
+    result = evaluation.generate_result(fake_report, req_mock)
 
-    assert 'evaluations' in res
-    tests_eval = list(res['evaluations'])
-    assert len(tests_eval) == len(reqs)
+    assert 'evaluations' in result
+    evaluations = list(result['evaluations'])
+    assert len(evaluations) == len(requirements)
     # If test passed, should return passed grade
-    assert tests_eval[0]['grade'] == ev.PASSED_GRADE
-    assert tests_eval[0]['description'] == reqs[0]['description']
+    assert evaluations[0]['grade'] == evaluation.PASSED_GRADE
+    assert evaluations[0]['description'] == requirements[0]['description']
     # If test failed, should return failed grade
-    assert tests_eval[1]['grade'] == ev.FAILED_GRADE
-    assert tests_eval[1]['description'] == reqs[1]['description']
+    assert evaluations[1]['grade'] == evaluation.FAILED_GRADE
+    assert evaluations[1]['description'] == requirements[1]['description']
     # If test is not found on report, should return failed grade
-    assert tests_eval[2]['grade'] == ev.FAILED_GRADE
-    assert tests_eval[2]['description'] == reqs[2]['description']
+    assert evaluations[2]['grade'] == evaluation.FAILED_GRADE
+    assert evaluations[2]['description'] == requirements[2]['description']
 
 
 def load_file(file):
