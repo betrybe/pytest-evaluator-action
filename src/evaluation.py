@@ -2,7 +2,7 @@ import os
 import json
 import sys
 
-FAILED_GRADE = 0
+FAILED_GRADE = 1
 PASSED_GRADE = 3
 
 
