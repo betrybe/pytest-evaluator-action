@@ -29,8 +29,8 @@ def test_generate_result_success():
 
 
 def test_enums():
-    evaluation.FAILED_GRADE == 1
-    evaluation.PASSED_GRADE == 3
+    assert evaluation.FAILED_GRADE == 1
+    assert evaluation.PASSED_GRADE == 3
 
 
 def load_file(file):
