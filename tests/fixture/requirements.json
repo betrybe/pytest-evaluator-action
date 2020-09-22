@@ -7,7 +7,7 @@
     },
     {
       "identifier": "test_csv_importer_sucesso",
-      "description": "Valide se a importação do JSON foi feita com sucesso",
+      "description": "Valide se a importação do CSV foi feita com sucesso",
       "bonus": false
     },
     {

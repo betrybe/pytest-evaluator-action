@@ -1,7 +1,7 @@
 {
     "report": {
         "environment": {
-            "Python": "3.7.7",
+            "Python": "3.8",
             "Platform": "Linux-5.4.57-1-MANJARO-x86_64-with-arch-Manjaro-Linux"
         },
         "tests": [
