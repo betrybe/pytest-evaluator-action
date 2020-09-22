@@ -44,7 +44,7 @@ def generate_result(report_file, req_file):
 
 if __name__ == "__main__":
     if len(sys.argv) < 3:
-        raise ValueError("You must pass report and requirements files as argument!")
+        raise ValueError("You must pass report and requirements files as arguments!")
 
     result = generate_result(sys.argv[1], sys.argv[2])
     print(json.dumps(result, sort_keys=True, indent=4))
