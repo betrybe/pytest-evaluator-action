@@ -1,7 +1,7 @@
 name: 'Pytest Evaluator'
 description: 'Run Pytest on project and return the results formatted'
 inputs:
-  repository-main-branch:
+  repository_main_branch:
     description: 'GitHub main branch to get the original tests and requirements.'
     default: 'master'
     required: true
@@ -11,5 +11,3 @@ outputs:
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args:
-    - ${{ inputs.repository-main-branch }}

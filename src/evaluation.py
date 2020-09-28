@@ -9,10 +9,15 @@ PASSED_GRADE = 3
 def generate_result(report_file, req_file):
     with open(report_file, 'r') as read_file:
         report = json.load(read_file)
-    tests = list(report['report']['tests'])
+    try:
+        tests = list(report['report']['tests'])
+    except KeyError:
+        raise ValueError('Invalid report file')
 
     with open(req_file, 'r') as read_file:
         r = json.load(read_file)
+    if 'requirements' not in r:
+        raise ValueError('Invalid requirements file')
     reqs = list(r['requirements'])
 
     evaluations = []
