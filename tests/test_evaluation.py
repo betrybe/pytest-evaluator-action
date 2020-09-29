@@ -32,31 +32,29 @@ def test_generate_result_success():
 def test_generate_result_with_report_file_not_found():
     mock_report = os.path.join(CURRENT_PATH, 'fixture', 'unexistent.json')
     req_mock = os.path.join(CURRENT_PATH, 'fixture', 'requirements.json')
-    with pytest.raises(FileNotFoundError):
+    with pytest.raises(FileNotFoundError, match=r".*No such file or directory:.*"):
         evaluation.generate_result(mock_report, req_mock)
 
 
 def test_generate_result_with_requirements_file_not_found():
     mock_report = os.path.join(CURRENT_PATH, 'fixture', 'report.json')
     req_mock = os.path.join(CURRENT_PATH, 'fixture', 'unexistent.json')
-    with pytest.raises(FileNotFoundError):
+    with pytest.raises(FileNotFoundError, match=r".*No such file or directory:.*"):
         evaluation.generate_result(mock_report, req_mock)
 
 
 def test_generate_result_with_report_file_invalid():
     mock_report = os.path.join(CURRENT_PATH, 'fixture', 'requirements.json')
     req_mock = os.path.join(CURRENT_PATH, 'fixture', 'requirements.json')
-    with pytest.raises(ValueError) as valueErr:
+    with pytest.raises(ValueError, match=r".*Invalid report file.*"):
         evaluation.generate_result(mock_report, req_mock)
-        assert 'Invalid report file' in str(valueErr)
 
 
 def test_generate_result_with_requirements_file_invalid():
     mock_report = os.path.join(CURRENT_PATH, 'fixture', 'report.json')
     req_mock = os.path.join(CURRENT_PATH, 'fixture', 'report.json')
-    with pytest.raises(ValueError) as valueErr:
+    with pytest.raises(ValueError, match=r".*Invalid requirements file.*"):
         evaluation.generate_result(mock_report, req_mock)
-        assert 'Invalid requirements file' in str(valueErr)
 
 
 def test_enums():
