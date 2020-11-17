@@ -44,7 +44,7 @@ jobs:
       - name: Pytest Evaluator Step
         uses: betrybe/pytest-evaluator-action@v*
         with:
-          repository-main-branch: master
+          repository_main_branch: master
         id: pytest_evaluator
       - name: Store evaluation step
         uses: betrybe/store-evaluation-action@v2
@@ -57,7 +57,7 @@ jobs:
 
 ## Inputs
 
-### `repository-main-branch`
+### `repository_main_branch`
 
 **Required**
 
@@ -99,7 +99,9 @@ This file should have the following structure:
 }
 ```
 
-where the `"requirement #1"`, `"requirement #2"` and `"requirement #3"` are the requirements and describes names and the `identifier` must be the test name in the project repository.
+where:
+- the `"requirement #1"`, `"requirement #2"` and `"requirement #3"` are the **requirements description**
+- the `identifier` must be **exactly the same** as the **test function name** (e.g. `test_function_a`)
 
 ## Learn about GitHub Actions
 
