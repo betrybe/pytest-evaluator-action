@@ -1,11 +1,7 @@
-FROM alpine:3.12.0
+FROM python:3.9.0-buster
 
-RUN apk --update add python3 && \
-    apk add py3-pip && \
-    apk add coreutils && \
-    apk add git less openssh && \
-    rm -rf /var/lib/apt/lists/* && \
-    rm /var/cache/apk/*
+RUN apt update && \
+    apt -yq install apt-utils git less
 
 COPY entrypoint.sh /home/entrypoint.sh
 COPY src/evaluation.py /home/evaluation.py
