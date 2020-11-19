@@ -1,7 +1,11 @@
 #!/bin/sh -l
 set -x
 
-git clone --single-branch --branch "$INPUT_REPOSITORY_MAIN_BRANCH" "https://github.com/$GITHUB_REPOSITORY.git" /github/main-branch/
+output=$(git clone --single-branch --branch "$INPUT_REPOSITORY_MAIN_BRANCH" "https://github.com/$GITHUB_REPOSITORY.git" /github/main-branch/ 2>&1)
+if [[ "$output" == *"Could not find remote branch"* ]]; then
+  printf "Given main branch $INPUT_REPOSITORY_MAIN_BRANCH not found\n"
+  exit 1
+fi
 
 # Assure that the tests are the originals
 rm -rf /github/workspace/tests
@@ -9,7 +13,7 @@ cp -r /github/main-branch/tests /github/workspace
 
 # Install deps and run pytest over the student source
 cd /github/workspace
-if [[ -f "dev-requirements.txt" ]]; then
+if test -f "dev-requirements.txt"; then
   python3 -m pip install -r dev-requirements.txt
 else
   python3 -m pip install -r requirements.txt
