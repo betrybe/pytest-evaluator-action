@@ -20,11 +20,6 @@ else
 fi
 python3 -m pytest --json=/tmp/report.json
 
-if [ $? != 0 ]; then
-  printf "Execution error $?"
-  exit 1
-fi
-
 # Run evaluator over pytest result assuring that the requirements file is the original
 python3 /home/evaluation.py /tmp/report.json /github/main-branch/.trybe/requirements.json > /tmp/evaluation_result.json
 
