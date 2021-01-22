@@ -51,19 +51,25 @@ jobs:
         with:
           evaluation-data: ${{ steps.pytest_evaluator.outputs.result }}
           environment: staging
-          pr-number: ${{ github.event.number }}
+          pr-number: ${{ github.event.inputs.pr_number }}
 
 ```
 
 ## Inputs
 
-### `repository_main_branch`
+- `repository_main_branch`
 
-**Required**
+  **Required**
 
-**Default: "master"**
+  **Default: "master"**
 
-GitHub main branch to get the original tests and requirements.
+  GitHub main branch to get the original tests and requirements.
+
+- `pr_author_username`
+
+  **Required**
+
+  Pull Request author username.
 
 ### Outputs
 
