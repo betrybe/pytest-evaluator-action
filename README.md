@@ -32,8 +32,20 @@ To call the evaluator action you must create `.github/workflows/main.yml` in the
 
 ```yml
 on:
-  pull_request:
-    types: [opened, synchronize]
+  workflow_dispatch:
+    inputs:
+      dispatch_token:
+        description: 'Token that authorize the dispatch'
+        required: true
+      head_sha:
+        description: 'Head commit SHA that dispatched the workflow'
+        required: true
+      pr_author_username:
+        description: 'Pull Request author username'
+        required: true
+      pr_number:
+        description: 'Pull Request number that dispatched the workflow'
+        required: true
 
 jobs:
   evaluator_job:
@@ -44,7 +56,7 @@ jobs:
       - name: Pytest Evaluator Step
         uses: betrybe/pytest-evaluator-action@v*
         with:
-          repository_main_branch: master
+          pr_author_username: ${{ github.event.inputs.pr_author_username }}
         id: pytest_evaluator
       - name: Store evaluation step
         uses: betrybe/store-evaluation-action@v2
@@ -57,14 +69,6 @@ jobs:
 
 ## Inputs
 
-- `repository_main_branch`
-
-  **Required**
-
-  **Default: "master"**
-
-  GitHub main branch to get the original tests and requirements.
-
 - `pr_author_username`
 
   **Required**
@@ -73,9 +77,9 @@ jobs:
 
 ### Outputs
 
-#### `result`
+- `result`
 
-Evaluation result JSON in base64 format.
+  Evaluation result JSON in base64 format.
 
 ## Trybe requirements and expected results
 

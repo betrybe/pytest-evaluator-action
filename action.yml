@@ -1,12 +1,8 @@
 name: 'Pytest Evaluator'
 description: 'Run Pytest on project and return the results formatted'
 inputs:
-  repository_main_branch:
-    description: 'GitHub main branch to get the original tests and requirements.'
-    default: 'master'
-    required: true
   pr_author_username:
-    description: 'Pull Request author username'
+    description: 'Pull Request author username.'
     required: true
 outputs:
   result:
