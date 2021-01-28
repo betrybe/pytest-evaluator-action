@@ -54,7 +54,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Pytest Evaluator Step
-        uses: betrybe/pytest-evaluator-action@v*
+        uses: betrybe/pytest-evaluator-action@v3
         with:
           pr_author_username: ${{ github.event.inputs.pr_author_username }}
         id: pytest_evaluator
