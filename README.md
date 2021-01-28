@@ -42,9 +42,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Pytest Evaluator Step
-        uses: betrybe/pytest-evaluator-action@v*
-        with:
-          repository_main_branch: master
+        uses: betrybe/pytest-evaluator-action@v2
         id: pytest_evaluator
       - name: Store evaluation step
         uses: betrybe/store-evaluation-action@v2
@@ -54,16 +52,6 @@ jobs:
           pr-number: ${{ github.event.number }}
 
 ```
-
-## Inputs
-
-### `repository_main_branch`
-
-**Required**
-
-**Default: "master"**
-
-GitHub main branch to get the original tests and requirements.
 
 ### Outputs
 
