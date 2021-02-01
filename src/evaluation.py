@@ -41,7 +41,7 @@ def generate_result(report_file, req_file):
         evaluations.append(evaluation)
 
     return {
-        'github_username': os.getenv('GITHUB_ACTOR', ''),
+        'github_username': os.getenv('INPUT_PR_AUTHOR_USERNAME', ''),
         'github_repository_name': os.getenv('GITHUB_REPOSITORY', ''),
         'evaluations': evaluations
     }
