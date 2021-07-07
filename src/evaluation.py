@@ -4,6 +4,7 @@ import sys
 
 FAILED_GRADE = 1
 PASSED_GRADE = 3
+ACCEPTABLE_OUTCOMES = {'passed', 'xfailed'}
 
 
 def generate_result(report_file, req_file):
@@ -36,7 +37,7 @@ def generate_result(report_file, req_file):
             continue
 
         test_result = next(iter(test_result))
-        if test_result['outcome'] == 'passed':
+        if test_result['outcome'] in ACCEPTABLE_OUTCOMES:
             evaluation['grade'] = PASSED_GRADE
         evaluations.append(evaluation)
 
