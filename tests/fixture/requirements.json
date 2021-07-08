@@ -14,6 +14,11 @@
       "identifier": "test_csv_importer_arquivo_nao_encontrado",
       "description": "Caso o arquivo não exista, deve ser exibida a mensagem \"Arquivo {path/to/file.json} não encontrado\"",
       "bonus": false
+    },
+    {
+      "identifier": "tests/sorting/test_sorting.py::test_sort_by[sort_by_strings]",
+      "description": "Confere que o teste não aprova a implementação sort_by_strings",
+      "bonus": false
     }
   ]
 }
