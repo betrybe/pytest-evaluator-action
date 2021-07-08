@@ -47,10 +47,34 @@
                     "outcome": "passed"
                 },
                 "outcome": "failed"
+            },
+            {
+                "name": "tests/sorting/test_sorting.py::test_sort_by[sort_by_strings]",
+                "duration": 0.0008007920000000501,
+                "run_index": 24,
+                "setup": {
+                    "name": "setup",
+                    "duration": 0.00023737499999998413,
+                    "outcome": "passed"
+                },
+                "call": {
+                    "name": "call",
+                    "duration": 0.0002031250000000817,
+                    "outcome": "xfailed",
+                    "xfail_reason": "",
+                    "longrepr": "jobs_by_max_salary = [{'max_salary': '1230'}, {'max_salary': '3230'}, {'max_salary': ''}, {'max_salary': '2230'}, {}]\njobs_by_min_salary = [{'min_salary': '1230'}, {'min_salary': '3230'}, {'min_salary': ''}, {'min_salary': '2230'}, {}]\njobs_by_date_posted = [{'date_posted': '2020-12-01'}, {'date_posted': '2020-12-31'}, {'date_posted': ''}, {'date_posted': '2020-12-20'}, {}]\n\n    def test_sort_by(jobs_by_max_salary, jobs_by_min_salary, jobs_by_date_posted):\n        sort_by(jobs_by_max_salary, 'max_salary')\n>       assert jobs_by_max_salary[0]['max_salary'] == '3230'\nE       AssertionError: assert '1230' == '3230'\nE         - 3230\nE         ? ^\nE         + 1230\nE         ? ^\n\ntests/sorting/test_sorting.py:40: AssertionError"
+                },
+                "teardown": {
+                    "name": "teardown",
+                    "duration": 0.00012291700000000017,
+                    "outcome": "passed"
+                },
+                "outcome": "xfailed"
             }
         ],
         "summary": {
             "passed": 1,
+            "xfailed": 1,
             "num_tests": 1,
             "duration": 0.09271740913391113
         },

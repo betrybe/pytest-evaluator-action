@@ -27,6 +27,9 @@ def test_generate_result_success():
     # If test is not found on report, should return failed grade
     assert evaluations[2]['grade'] == evaluation.FAILED_GRADE
     assert evaluations[2]['description'] == requirements[2]['description']
+    # If test xfailed, should return passed grade
+    assert evaluations[3]['grade'] == evaluation.PASSED_GRADE
+    assert evaluations[3]['description'] == requirements[3]['description']
 
 
 def test_generate_result_with_report_file_not_found():
