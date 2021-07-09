@@ -16,7 +16,7 @@
       "bonus": false
     },
     {
-      "identifier": "tests/sorting/test_sorting.py::test_sort_by[sort_by_strings]",
+      "identifier": "test_sort_by[sort_by_strings]",
       "description": "Confere que o teste não aprova a implementação sort_by_strings",
       "bonus": false
     }
