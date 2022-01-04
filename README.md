@@ -18,14 +18,6 @@ make test
 python3 -m pytest
 ```
 
-### Build docker image
-
-```sh
-make build
-# or
-docker build . -t 'pytest_evaluator_action'
-```
-
 ## Evaluator Action
 
 To call the evaluator action you must create `.github/workflows/main.yml` in the project repo with the release version.
@@ -112,7 +104,3 @@ This file should have the following structure:
 where:
 - the `"requirement #1"`, `"requirement #2"` and `"requirement #3"` are the **requirements description**
 - the `identifier` must be **exactly the same** as the **test function name** (e.g. `test_function_a`)
-
-## Learn about GitHub Actions
-
-- https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-a-docker-container-action
