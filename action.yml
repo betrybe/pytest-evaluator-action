@@ -7,6 +7,7 @@ inputs:
 outputs:
   result:
     description: 'Evaluation JSON results in base64 format.'
+    value: ${{ steps.run_pytest.outputs.result }}
 
 runs:
   using: 'composite'
@@ -14,18 +15,8 @@ runs:
     - id: run_pytest
       shell: bash
       run: ${{ github.action_path }}/evaluate.sh
-
-    - id: setup_evaluator
-      shell: bash
-      run: python3 -m pip install -r ${{ github.action_path }}/requirements.txt
-
-    - id: run_evaluator
-      shell: bash
-      run: python3 ${{ github.action_path }}/src/evaluation.py /tmp/report.json ${{ github.workspace }}/.trybe/requirements.json > /tmp/evaluation_result.json
       env:
+        EVALUATOR_REQUIREMENTS: ${{ github.action_path }}/requirements.txt
+        EVALUATOR_SRC: ${{ github.action_path }}/src
         INPUT_PR_AUTHOR_USERNAME: ${{ inputs.pr_author_username }}
         GITHUB_REPOSITORY: ${{ github.repository }}
-
-    - id: set_result_output
-      shell: bash
-      run: echo ::set-output name=result::`cat /tmp/evaluation_result.json | base64 -w 0`
