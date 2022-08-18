@@ -4,6 +4,10 @@ inputs:
   pr_author_username:
     description: 'Pull Request author username'
     required: true
+  python_version:
+    description: 'Python version'
+    default: '3.8'
+    required: false
 outputs:
   result:
     description: 'Evaluation JSON results in base64 format.'
@@ -19,4 +23,5 @@ runs:
         EVALUATOR_REQUIREMENTS: ${{ github.action_path }}/requirements.txt
         EVALUATOR_SRC: ${{ github.action_path }}/src
         INPUT_PR_AUTHOR_USERNAME: ${{ inputs.pr_author_username }}
+        INPUT_PYTHON_VERSION: ${{ inputs.python_version }}
         GITHUB_REPOSITORY: ${{ github.repository }}

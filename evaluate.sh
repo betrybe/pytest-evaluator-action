@@ -2,22 +2,26 @@
 
 export DB_HOST=localhost
 
-python3 -m pip install virtualenv wheel --no-cache-dir
+sudo apt update
+sudo add-apt-repository -y ppa:deadsnakes/ppa
+sudo apt install -y "python$INPUT_PYTHON_VERSION"
+
+"python$INPUT_PYTHON_VERSION" -m pip install virtualenv wheel --no-cache-dir
 
 # Install deps and run pytest over the student source
-python3 -m venv ".venv/$INPUT_PR_AUTHOR_USERNAME-project" --system-site-packages
+"python$INPUT_PYTHON_VERSION" -m venv ".venv/$INPUT_PR_AUTHOR_USERNAME-project" --system-site-packages
 source ".venv/$INPUT_PR_AUTHOR_USERNAME-project/bin/activate"
 if test -f "dev-requirements.txt" ; then
-  python3 -m pip install -r dev-requirements.txt --no-cache-dir
+  "python$INPUT_PYTHON_VERSION" -m pip install -r dev-requirements.txt --no-cache-dir
 else
-  python3 -m pip install -r requirements.txt --no-cache-dir
+  "python$INPUT_PYTHON_VERSION" -m pip install -r requirements.txt --no-cache-dir
 fi
-python3 -m pytest --json=/tmp/report.json
+"python$INPUT_PYTHON_VERSION" -m pytest --json=/tmp/report.json
 
-python3 -m venv ".venv/$INPUT_PR_AUTHOR_USERNAME-evaluator" --system-site-packages
+"python$INPUT_PYTHON_VERSION" -m venv ".venv/$INPUT_PR_AUTHOR_USERNAME-evaluator" --system-site-packages
 source ".venv/$INPUT_PR_AUTHOR_USERNAME-evaluator/bin/activate"
-python3 -m pip install -r "$EVALUATOR_REQUIREMENTS"
-python3 "$EVALUATOR_SRC/evaluation.py" /tmp/report.json .trybe/requirements.json > /tmp/evaluation_result.json
+"python$INPUT_PYTHON_VERSION" -m pip install -r "$EVALUATOR_REQUIREMENTS"
+"python$INPUT_PYTHON_VERSION" "$EVALUATOR_SRC/evaluation.py" /tmp/report.json .trybe/requirements.json > /tmp/evaluation_result.json
 
 if [ $? != 0 ]; then
   printf "Execution error $?"

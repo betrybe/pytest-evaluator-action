@@ -67,6 +67,12 @@ jobs:
 
   Pull Request author username.
 
+- `python_version`
+
+  **Optional**
+
+  Evaluator's Python version
+
 ### Outputs
 
 - `result`
