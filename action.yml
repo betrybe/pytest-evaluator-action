@@ -1,16 +1,20 @@
-name: 'Pytest Evaluator'
-description: 'Run Pytest on project and return the results formatted'
+name: "Pytest Evaluator"
+description: "Run Pytest on project and return the results formatted"
 inputs:
   pr_author_username:
-    description: 'Pull Request author username'
+    description: "Pull Request author username"
     required: true
+  python_version:
+    default: "3.8"
+    description: "Python version"
+    required: false
 outputs:
   result:
-    description: 'Evaluation JSON results in base64 format.'
+    description: "Evaluation JSON results in base64 format."
     value: ${{ steps.run_pytest.outputs.result }}
 
 runs:
-  using: 'composite'
+  using: "composite"
   steps:
     - id: run_pytest
       shell: bash
