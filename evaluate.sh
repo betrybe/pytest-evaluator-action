@@ -5,6 +5,7 @@ export DB_HOST=localhost
 sudo apt update
 sudo add-apt-repository -y ppa:deadsnakes/ppa
 sudo apt install -y "python$INPUT_PYTHON_VERSION"
+sudo apt install -y "python$INPUT_PYTHON_VERSION-distutils"
 
 "python$INPUT_PYTHON_VERSION" -m pip install virtualenv wheel --no-cache-dir
 
