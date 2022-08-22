@@ -44,12 +44,18 @@ jobs:
     name: Evaluator Job
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
       - name: Pytest Evaluator Step
         uses: betrybe/pytest-evaluator-action@v3
         with:
           pr_author_username: ${{ github.event.inputs.pr_author_username }}
         id: pytest_evaluator
+
       - name: Store evaluation step
         uses: betrybe/store-evaluation-action@v2
         with:
@@ -66,12 +72,6 @@ jobs:
   **Required**
 
   Pull Request author username.
-
-- `python_version`
-
-  **Optional**
-
-  Evaluator's Python version
 
 ### Outputs
 
