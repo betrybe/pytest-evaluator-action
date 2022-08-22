@@ -6,10 +6,15 @@ sudo apt update
 sudo add-apt-repository -y ppa:deadsnakes/ppa
 echo "INSTALANDO PYTHON"
 sudo apt install -y "python$INPUT_PYTHON_VERSION"
-echo "INSTALANDO PYTHON-DISUTILS"
+echo "INSTALANDO PYTHON-DISTUTILS"
 sudo apt install -y "python$INPUT_PYTHON_VERSION-distutils"
+echo "CRIANDO AMBIENTE VIRTUAL"
+"python$INPUT_PYTHON_VERSION" -m venv .venv
+echo "ATIVANDO O AMBIENTE VIRTUAL"
+source .venv/bin/activate
 echo "INSTALANDO PIP"
 curl -sS https://bootstrap.pypa.io/get-pip.py | sudo "python$INPUT_PYTHON_VERSION"
+echo "FINALIZANDO A INSTALAÇÃO DO PIP"
 
 
 "python$INPUT_PYTHON_VERSION" -m pip install virtualenv wheel --no-cache-dir
