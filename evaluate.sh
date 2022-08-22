@@ -4,8 +4,13 @@ export DB_HOST=localhost
 
 sudo apt update
 sudo add-apt-repository -y ppa:deadsnakes/ppa
+echo "INSTALANDO PYTHON"
 sudo apt install -y "python$INPUT_PYTHON_VERSION"
+echo "INSTALANDO PYTHON-DISUTILS"
 sudo apt install -y "python$INPUT_PYTHON_VERSION-distutils"
+echo "INSTALANDO PIP"
+curl -sS https://bootstrap.pypa.io/get-pip.py | "python$INPUT_PYTHON_VERSION"
+
 
 "python$INPUT_PYTHON_VERSION" -m pip install virtualenv wheel --no-cache-dir
 
