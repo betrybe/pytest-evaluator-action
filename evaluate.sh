@@ -25,6 +25,4 @@ if [ $? != 0 ]; then
 fi
 
 echo `cat /tmp/evaluation_result.json | base64 -w 0`
-# echo ::set-output name=result::`cat /tmp/evaluation_result.json | base64 -w 0`
-
-echo name=result >> $GITHUB_OUTPUT `cat /tmp/evaluation_result.json | base64 -w 0`
+echo "result=`cat /tmp/evaluation_result.json | base64 -w 0`" >> $GITHUB_OUTPUT
