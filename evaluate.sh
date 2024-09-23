@@ -10,7 +10,9 @@ python -m venv ".venv/$INPUT_PR_AUTHOR_USERNAME-project" --system-site-packages
 source ".venv/$INPUT_PR_AUTHOR_USERNAME-project/bin/activate"
 
 # instala as dependências do projeto da pessoa estudante
-if test -f "dev-requirements.txt" ; then
+if test -f "test-requirements.txt" ; then
+  python -m pip install -r test-requirements.txt --no-cache-dir
+elif test -f "dev-requirements.txt" ; then
   python -m pip install -r dev-requirements.txt --no-cache-dir
 else
   python -m pip install -r requirements.txt --no-cache-dir
